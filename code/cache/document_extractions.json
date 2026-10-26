@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "description": "Facts read from the 4 PDF evidence documents, keyed by evidence_id from dataset/evidence_files.csv. Only text printed in the PDF is recorded.",
+    "method": "pdftotext_layout_transcribed",
+    "extracted_by": "pdftotext (poppler) text read and transcribed by Claude Code (claude-sonnet-5-5); no external model API call was made",
+    "model_api_calls": 0,
+    "regenerate": "text was read once with pdftotext -layout and transcribed by hand; docs.py only reads this cache"
+  },
+  "documents": {
+    "evidence_18": {
+      "file_path": "evidence/documents/account_history_report_20260718.pdf",
+      "records": [
+        {
+          "system_id": "export_service",
+          "resource_id": null,
+          "alias": "NST-2026-0718-1842",
+          "category": "USER_EXPORT",
+          "name": "Ingrid Dahl",
+          "user_ref": "user_18",
+          "email": "ingrid.dahl@outlook.com",
+          "state": "PRESENT",
+          "note": "customer statement NST-2026-0718-1842, order ORD-20261260; the resource id is not printed, only the statement number"
+        }
+      ]
+    },
+    "evidence_58": {
+      "file_path": "evidence/documents/delivery_correction_attachment.pdf",
+      "records": [
+        {
+          "system_id": "support_platform",
+          "resource_id": "support_001",
+          "category": "SUPPORT_ATTACHMENT",
+          "name": "Priya Raman",
+          "email": "priya.raman@gmail.com",
+          "phone": "+91 98765 73142",
+          "ticket": "CS-4827",
+          "uploader": "customer",
+          "captured_at": "2026-09-12T07:30:00Z",
+          "state": "PRESENT"
+        }
+      ]
+    },
+    "evidence_27": {
+      "file_path": "evidence/documents/legal_retention_register_20260529.pdf",
+      "records": [
+        {"system_id": "legal_service", "resource_id": null, "category": "LEGAL_HOLD_RECORD", "user_ref": "user_08", "order": "ORD-20264118", "retain_until": "2033-05-04", "state": "PRESENT"},
+        {"system_id": "legal_service", "resource_id": null, "category": "LEGAL_HOLD_RECORD", "user_ref": "user_12", "order": "ORD-20264207", "retain_until": "2033-05-09", "state": "PRESENT"},
+        {"system_id": "legal_service", "resource_id": null, "category": "LEGAL_HOLD_RECORD", "user_ref": "user_17", "order": "ORD-20264319", "retain_until": "2033-05-14", "state": "PRESENT"},
+        {"system_id": "legal_service", "resource_id": null, "category": "LEGAL_HOLD_RECORD", "user_ref": "user_21", "order": "ORD-20264402", "retain_until": "2033-05-18", "state": "PRESENT"},
+        {"system_id": "legal_service", "resource_id": null, "category": "LEGAL_HOLD_RECORD", "user_ref": "user_24", "order": "ORD-20264511", "retain_until": "2033-05-23", "state": "PRESENT"},
+        {"system_id": "legal_service", "resource_id": null, "category": "LEGAL_HOLD_RECORD", "user_ref": "user_29", "order": "ORD-20264600", "retain_until": "2033-05-28", "state": "PRESENT"}
+      ],
+      "note": "register rows carry order and user references but no legal_hold_* resource id"
+    },
+    "evidence_55": {
+      "file_path": "evidence/documents/security_retention_extract.pdf",
+      "records": [
+        {
+          "system_id": "security_service",
+          "resource_id": "audit_record_003",
+          "category": "SECURITY_AUDIT_LOG",
+          "user_ref": "user_03",
+          "event": "Account closure recorded",
+          "recorded_at": "2026-08-25T04:03:00Z",
+          "retention_until": "2027-08-25T04:03:00Z",
+          "state": "PRESENT"
+        }
+      ]
+    }
+  }
+}

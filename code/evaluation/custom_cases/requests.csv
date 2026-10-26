@@ -1,0 +1,5 @@
+case_id,email,requested_at,reported_status,reported_at,audit_at,request_text
+custom_01,nadia.petrescu@yahoo.com,2026-08-31T15:42:00Z,COMPLETE,2026-09-02T10:08:00Z,2026-09-18T12:25:00Z,I used this Yahoo address before changing the email on my account. Please remove records linked to both the old and current addresses.
+custom_02,amina.elmasri@gmail.com,2026-08-18T09:14:00Z,COMPLETE,2026-08-20T16:42:00Z,2026-09-03T11:30:00Z,Solicito la eliminación permanente de la cuenta asociada a este correo. Revisen los identificadores actuales y anteriores.
+custom_03,priya.raman@gmail.com,2026-08-31T11:26:00Z,COMPLETE,2026-09-01T19:30:00Z,2026-09-12T08:00:00Z,Could you send me a copy of the data you hold on my account? Please do not delete anything.
+custom_04,camille.bernard@outlook.com,2026-08-26T12:00:00Z,COMPLETE,2026-08-27T12:00:00Z,2026-09-15T12:00:00Z,"I was told the account had been deleted, but I can still find traces in search, support, and analytics. Please handle them and disable any synchronization that could recreate them."

@@ -1,0 +1,1 @@
+# stdlib only: Python 3.10+ (developed on 3.14); no third-party packages are required.

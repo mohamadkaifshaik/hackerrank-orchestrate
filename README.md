@@ -155,3 +155,41 @@ Before submitting, confirm that:
 - `code.zip` includes your runnable code, `README.md`, `code/evaluation/evaluation_report.md`, and `code/evaluation/usage_report.md`;
 - `log.txt` follows the `AGENTS.md` turn format and is uploaded to the `chat_transcript` slot; and
 - no API keys, credentials, real personal data, or sensitive configuration values are included.
+
+---
+
+# Solution: Ghost Data Still Exists deletion-audit agent
+
+Pure Python (3.10+, standard library only, no setup beyond Python). Runs offline and deterministically.
+
+## Run
+
+From the repository root:
+
+```bash
+python code/main.py                  # writes output.csv (518 rows) at the repo root
+python code/main.py --case case_07   # inspect one case
+python code/tools/evaluate.py        # score the 32 public samples (development only)
+python code/tools/evaluate.py --custom
+```
+
+Optional: `python code/main.py --llm` asks a model (`ANTHROPIC_API_KEY` from the environment, never stored)
+only about request texts the deterministic rules call ambiguous. Not needed for the submitted output.
+
+## How it works
+
+1. `audit/intent.py` – multilingual rule-based check that the request authorizes deletion (refusals such as
+   "do not delete" and access/export/correction requests give `NOT_APPLICABLE`).
+2. `audit/identity.py` – replays `user_audit_log.csv` over the identity snapshot, so current and historical
+   emails, phones and hashes resolve to one `user_id`.
+3. `audit/evidence/` – parses every evidence file once (SQL via in-memory SQLite, JSON, TXT, six log layouts,
+   cached PDF/screenshot extractions) into observations: resource, category, state, time, identifiers.
+4. `audit/linker.py` + `audit/roster.py` – link resources to the subject by identifiers and link rows; accounts
+   that only appear in shared deletion-worker rows are attributed only when unambiguous.
+5. `audit/state.py` – state at `audit_at` using only observations and citations captured at or before it.
+6. `audit/planner.py` – findings, remediation (flows and restores first), verification, fixed ordering and
+   numbering. `audit/validate.py` checks the contract on every run.
+
+`code/cache/*.json` holds the one-time screenshot/PDF extractions (manual AI vision, disclosed in
+`code/evaluation/usage_report.md`); the program needs them at run time.
+Evaluation: `code/evaluation/evaluation_report.md`.
